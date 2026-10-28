@@ -1,8 +1,18 @@
 const API_URL = "http://localhost:8080/api";
 
 const screens = document.querySelectorAll(".screen");
+let isAuthenticated = false;
 const showScreen = (id) => {
-  screens.forEach((screen) => screen.classList.toggle("screen-active", screen.id === id));
+  const isHome = id === "inicio" || id === "review";
+  screens.forEach((screen) => {
+    screen.classList.toggle("screen-active", screen.id === id || (id === "review" && screen.id === "inicio"));
+  });
+  document.querySelector(".guest-nav").classList.toggle("hidden", !isHome || isAuthenticated);
+  document.querySelector(".back-nav").classList.toggle("hidden", isHome);
+  document.getElementById("site-brand").textContent =
+    id === "review" ? "MIED ITSON" :
+      id === "login" || id === "recuperacion" ? "EGRESADOS ITSON" : "EGRESADOS FOLLOWER";
+  document.body.classList.toggle("password-reset-active", id === "recuperacion");
   window.location.hash = id;
   window.scrollTo({ top: 0, behavior: "smooth" });
 };
@@ -57,7 +67,8 @@ const loadOpportunities = async () => {
 
 document.getElementById("register-form").addEventListener("submit", async (event) => {
   event.preventDefault();
-  const form = new FormData(event.currentTarget);
+  const formElement = event.currentTarget;
+  const form = new FormData(formElement);
   try {
     const result = await request("/registrations", {
       method: "POST",
@@ -72,7 +83,7 @@ document.getElementById("register-form").addEventListener("submit", async (event
       })
     });
     setMessage("register-message", result.message, false);
-    event.currentTarget.reset();
+    formElement.reset();
     showScreen("review");
   } catch (error) {
     setMessage("register-message", error.message);
@@ -91,7 +102,7 @@ document.getElementById("login-form").addEventListener("submit", async (event) =
       setMessage("login-message", result.message, false);
       return;
     }
-    document.querySelector(".guest-nav").classList.add("hidden");
+    isAuthenticated = true;
     document.getElementById("publish-button").classList.remove("hidden");
     showScreen("inicio");
   } catch (error) {

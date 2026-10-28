@@ -8,15 +8,18 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="#inicio">EGRESADOS FOLLOWER</a>
+    <a class="brand" id="site-brand" href="#inicio">EGRESADOS FOLLOWER</a>
     <nav class="guest-nav" aria-label="Navegación principal">
       <button class="button button-outline" data-screen="registro">Registrarse</button>
       <button class="button button-primary" data-screen="login">Iniciar sesión</button>
     </nav>
+    <nav class="back-nav hidden" aria-label="Navegación secundaria">
+      <button class="text-button" type="button" data-screen="inicio">← Volver al inicio</button>
+    </nav>
   </header>
 
   <main>
-    <section id="inicio" class="screen screen-active" aria-labelledby="home-title">
+    <section id="inicio" class="screen screen-active home-screen" aria-labelledby="home-title">
       <div class="section-heading">
         <div>
           <h1 id="home-title">Oportunidades Laborales y Proyectos</h1>
@@ -27,19 +30,19 @@
       <div id="opportunities" class="opportunity-grid" aria-live="polite"></div>
     </section>
 
-    <section id="registro" class="screen" aria-labelledby="register-title">
+    <section id="registro" class="screen auth-screen" aria-labelledby="register-title">
       <form class="card form-card" id="register-form">
         <div class="form-heading">
           <h1 id="register-title">Registro de Egresado</h1>
           <p>Ingresa tus datos para solicitar el acceso a la plataforma.</p>
         </div>
         <div class="form-grid">
-          <label>Nombre(s)<input name="firstName" required autocomplete="given-name"></label>
-          <label>Apellido paterno<input name="fatherLastName" required autocomplete="family-name"></label>
-          <label>Apellido materno<input name="motherLastName" required></label>
-          <label>Correo electrónico<input name="email" type="email" required autocomplete="email"></label>
-          <label>Contraseña<input name="password" type="password" minlength="8" required autocomplete="new-password"></label>
-          <label>Carrera / Programa Educativo de Egreso
+          <label class="register-name">Nombre(s)<input name="firstName" required autocomplete="given-name"></label>
+          <label>Apellido Paterno<input name="fatherLastName" required autocomplete="family-name"></label>
+          <label>Apellido Materno<input name="motherLastName" required></label>
+          <label class="register-email">Correo electrónico personal<input name="email" type="email" placeholder="ejemplo@correo.com" required autocomplete="email"></label>
+          <label class="register-password">Contraseña<input name="password" type="password" minlength="8" required autocomplete="new-password"></label>
+          <label class="register-major">Carrera / Programa Educativo de Egreso
             <select name="major" required>
               <option value="">Selecciona tu carrera...</option>
               <option>Ingeniería de Software</option>
@@ -49,45 +52,49 @@
             </select>
           </label>
         </div>
-        <label class="checkbox-label"><input name="privacyAccepted" type="checkbox" required> He leído y acepto el Aviso de Privacidad.</label>
+        <label class="checkbox-label"><input name="privacyAccepted" type="checkbox" required> <span>He leído y acepto el <span class="privacy-link">Aviso de Privacidad</span>.</span></label>
         <p class="form-message" id="register-message" role="alert"></p>
         <button class="button button-primary button-wide" type="submit">Enviar solicitud de registro</button>
       </form>
     </section>
 
-    <section id="login" class="screen" aria-labelledby="login-title">
+    <section id="login" class="screen auth-screen" aria-labelledby="login-title">
       <form class="card form-card compact" id="login-form">
         <div class="form-heading">
           <h1 id="login-title">Iniciar sesión</h1>
           <p>Ingresa tus credenciales para acceder a tu cuenta.</p>
         </div>
         <label>Correo electrónico personal<input name="email" type="email" placeholder="ejemplo@correo.com" required autocomplete="email"></label>
-        <div class="label-with-link"><label>Contraseña</label><button class="text-button" type="button" data-screen="recuperacion">¿Olvidaste tu contraseña?</button></div>
-        <input name="password" type="password" required autocomplete="current-password">
+        <div class="label-with-link"><label for="login-password">Contraseña</label><button class="text-button" type="button" data-screen="recuperacion">¿Olvidaste tu contraseña?</button></div>
+        <input id="login-password" name="password" type="password" required autocomplete="current-password">
         <p class="form-message" id="login-message" role="alert"></p>
         <button class="button button-primary button-wide" type="submit">Ingresar a mi cuenta</button>
         <p class="form-footer">¿Aún no tienes una cuenta? <button class="text-button" type="button" data-screen="registro">Solicita tu registro aquí</button></p>
       </form>
     </section>
 
-    <section id="recuperacion" class="screen" aria-labelledby="reset-title">
-      <form class="card form-card compact" id="reset-form">
-        <div class="form-heading">
-          <h1 id="reset-title">Recuperar contraseña</h1>
-          <p>Ingresa el correo asociado a tu cuenta y te enviaremos un enlace para restablecer tu acceso.</p>
-        </div>
-        <label>Correo electrónico personal<input name="email" type="email" placeholder="tu.correo@ejemplo.com" required autocomplete="email"></label>
-        <p class="form-message" id="reset-message" role="alert"></p>
-        <button class="button button-primary button-wide" type="submit">Enviar enlace de recuperación</button>
-        <button class="button button-link button-wide" type="button" data-screen="login">Volver a iniciar sesión</button>
-      </form>
+    <section id="recuperacion" class="screen auth-screen reset-screen" aria-labelledby="reset-title">
+      <div class="reset-content">
+        <h1 class="reset-brand">EGRESADOS ITSON</h1>
+        <form class="card form-card compact reset-card" id="reset-form">
+          <div class="form-heading">
+            <h1 id="reset-title">Recuperar contraseña</h1>
+            <p>Ingresa el correo electrónico asociado a tu cuenta y te enviaremos un enlace para restablecer tu acceso.</p>
+          </div>
+          <label>Correo electrónico<input name="email" type="email" placeholder="tu.correo@ejemplo.com" required autocomplete="email"></label>
+          <p class="form-message" id="reset-message" role="alert"></p>
+          <button class="button button-primary button-wide" type="submit">Enviar enlace de recuperación</button>
+          <button class="button button-link button-wide" type="button" data-screen="login">Volver a iniciar sesión</button>
+        </form>
+      </div>
     </section>
 
-    <section id="review" class="screen" aria-labelledby="review-title">
-      <div class="card status-card">
-        <div class="status-icon" aria-hidden="true">✓</div>
+    <section id="review" class="screen review-screen" aria-labelledby="review-title">
+      <div class="card status-card" role="dialog" aria-modal="true" aria-labelledby="review-title">
+        <div class="status-icon" aria-hidden="true"><img src="assets/pending-clock.svg" alt=""></div>
         <h1 id="review-title">Solicitud en revisión</h1>
-        <p>Tu información ha sido recibida y está siendo analizada por un coordinador de tu carrera o posgrado para verificar tu estatus de egresado. Recibirás una notificación en tu correo electrónico en cuanto tu acceso sea validado.</p>
+        <p>Tu información ha sido recibida y está siendo analizada por un coordinador de tu carrera o posgrado para verificar tu estatus de egresado.</p>
+        <p>Recibirás una notificación en tu correo electrónico en cuanto tu acceso sea validado.</p>
         <button class="button button-primary button-wide" data-screen="inicio">Entendido</button>
       </div>
     </section>

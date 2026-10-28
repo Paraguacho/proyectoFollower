@@ -7,4 +7,10 @@ US 1.3 - 26/10/2026: Implementado el estado de solicitud pendiente en `frontend/
 US 1.4 - 26/10/2026: Preparadas las entidades y estados para aprobación/rechazo mediante `users.account_status` y `registration_requests.status`; añadido `RegistrationNotificationService` con Spring Mail y las plantillas visuales en `frontend/email-registration-approved.html` y `frontend/email-registration-rejected.html`.
 US 1.5 - 26/10/2026: Implementado el inicio de sesión con contraseñas cifradas mediante BCrypt en `AuthenticationService` y `AuthenticationController`; vista en `frontend/index.html`.
 US 1.6 - 26/10/2026: Implementada la solicitud de recuperación de contraseña en `PasswordResetService` y `PasswordResetController`, con tokens hash en `password_reset_tokens` y vista en `frontend/index.html`.
+US 1.1 - 28/10/2026: Tablero alineado al prototipo; vista en `frontend/index.html:22` y estilos en `frontend/styles.css:31`.
+US 1.2 - 28/10/2026: Registro alineado al prototipo y conservando la contraseña requerida; vista en `frontend/index.html:33`, estilos en `frontend/styles.css:68` y envío en `frontend/app.js:70`.
+US 1.3 - 28/10/2026: Solicitud pendiente presentada como modal sobre el tablero; vista en `frontend/index.html:92` y estilos en `frontend/styles.css:90`.
+US 1.5 - 28/10/2026: Inicio de sesión alineado al prototipo; vista en `frontend/index.html:61` y estilos en `frontend/styles.css:73`.
+US 1.6 - 28/10/2026: Recuperación de contraseña alineada al prototipo; vista en `frontend/index.html:76` y estilos en `frontend/styles.css:79`.
 CHANGES LOG: 26/10/2026: Creada la estructura inicial de base de datos, servicios Spring Boot y frontend estático para las historias 1.1 a 1.6. No se ejecutaron servicios ni pruebas, según la solicitud.
+28/10/2026: Alineada la GUI de las historias 1.1 a 1.6 con el prototipo de Figma en `frontend/index.html`, `frontend/styles.css` y `frontend/app.js`; añadidos los iconos SVG locales, conservado el campo de contraseña requerido por el backend y corregida la limpieza del formulario de registro antes de abrir el modal de revisión.
