@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.follower.service.AuthenticationServiceTest
+-------------------------------------------------------------------------------
+Tests run: 7, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.552 s -- in com.follower.service.AuthenticationServiceTest

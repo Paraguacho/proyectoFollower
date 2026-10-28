@@ -41,6 +41,9 @@ CREATE TABLE IF NOT EXISTS job_opportunities (
 CREATE INDEX IF NOT EXISTS idx_registration_requests_status
     ON registration_requests(status);
 
+CREATE UNIQUE INDEX IF NOT EXISTS idx_users_email_lower
+    ON users(lower(email));
+
 CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_user
     ON password_reset_tokens(user_id);
 

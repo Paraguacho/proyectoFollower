@@ -4,8 +4,8 @@ import com.follower.model.ApiMessage;
 import com.follower.model.RegistrationRequest;
 import com.follower.service.RegistrationService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/registrations")
@@ -17,11 +17,12 @@ public class RegistrationController {
     }
 
     @PostMapping
-    public ApiMessage register(@RequestBody RegistrationRequest request) {
+    public ResponseEntity<ApiMessage> register(@RequestBody RegistrationRequest request) {
         try {
-            return service.register(request);
+            return ResponseEntity.ok(service.register(request));
         } catch (IllegalArgumentException exception) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, exception.getMessage(), exception);
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST)
+                    .body(new ApiMessage(exception.getMessage(), "ERROR"));
         }
     }
 }

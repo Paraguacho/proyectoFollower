@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Repository;
 
 import java.time.OffsetDateTime;
+import java.util.Locale;
 import java.util.Optional;
 
 @Repository
@@ -34,7 +35,7 @@ public class UserRepository {
                 RETURNING id
                 """, Long.class,
                 request.firstName(), request.fatherLastName(), request.motherLastName(),
-                request.email().trim().toLowerCase(), passwordEncoder.encode(request.password()),
+                request.email().trim().toLowerCase(Locale.ROOT), passwordEncoder.encode(request.password()),
                 request.major());
     }
 

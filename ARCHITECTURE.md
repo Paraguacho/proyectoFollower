@@ -13,4 +13,12 @@ https://www.figma.com/design/dczkSKdy39BpiyKJZfSAL9/Follower?node-id=63-177&t=sf
 ER:
 https://drive.google.com/file/d/1zTi_0EMHPaH1PsW54_dzj6g6y1jV4Q1I/view?usp=drive_link
 
-
+LOCAL EXECUTION:
+Create the PostgreSQL database `follower` if it does not exist, then set the
+`DATABASE_PASSWORD` environment variable to the password for `DATABASE_USERNAME`
+(defaults to `postgres`) in the same PowerShell window where the service will run,
+for example `$env:DATABASE_PASSWORD = "<contraseña-local>"`.
+Optionally set `DATABASE_URL` to use another PostgreSQL host or port. From
+`backend\services`, run `mvn spring-boot:run` and open
+`http://localhost:8080`; Spring initializes the tables from
+`backend\database\schema.sql` and serves the frontend on the same origin.

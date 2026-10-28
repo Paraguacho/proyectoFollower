@@ -4,8 +4,8 @@ import com.follower.model.ApiMessage;
 import com.follower.model.LoginRequest;
 import com.follower.service.AuthenticationService;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -17,11 +17,12 @@ public class AuthenticationController {
     }
 
     @PostMapping("/login")
-    public ApiMessage login(@RequestBody LoginRequest request) {
+    public ResponseEntity<ApiMessage> login(@RequestBody LoginRequest request) {
         try {
-            return service.login(request);
+            return ResponseEntity.ok(service.login(request));
         } catch (IllegalArgumentException exception) {
-            throw new ResponseStatusException(HttpStatus.UNAUTHORIZED, exception.getMessage(), exception);
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(new ApiMessage(exception.getMessage(), "ERROR"));
         }
     }
 }

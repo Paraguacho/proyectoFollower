@@ -7,6 +7,8 @@ import com.follower.repository.UserRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.Locale;
+
 @Service
 public class AuthenticationService {
     private final UserRepository users;
@@ -21,7 +23,12 @@ public class AuthenticationService {
     }
 
     public ApiMessage login(LoginRequest request) {
-        var user = users.findForLogin(request.email().trim());
+        if (request == null || request.email() == null || request.email().isBlank()
+                || request.password() == null || request.password().isBlank()) {
+            throw new IllegalArgumentException(
+                    "El correo electrónico o la contraseña son incorrectos. Por favor, verifica tus datos.");
+        }
+        var user = users.findForLogin(request.email().trim().toLowerCase(Locale.ROOT));
         if (user.isEmpty() || !passwordEncoder.matches(request.password(), user.get().passwordHash())) {
             throw new IllegalArgumentException(
                     "El correo electrónico o la contraseña son incorrectos. Por favor, verifica tus datos.");
