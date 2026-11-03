@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Solicitudes de ingreso | Egresados ITSON</title>
+  <link rel="stylesheet" href="solicitudes-ingreso.css">
+</head>
+<body>
+  <div class="admin-app">
+    <header class="topbar">
+      <a class="brand" href="index.html">EGRESADOS ITSON</a>
+      <nav class="top-navigation" aria-label="Navegación administrativa">
+        <a href="#gestion">Gestión de egresados</a>
+        <a class="top-navigation-active" href="#solicitudes" aria-current="page">Solicitudes de ingreso</a>
+      </nav>
+      <div class="coordinator">
+        <span>Responsable de programa educativo</span>
+        <button class="coordinator-menu" type="button" aria-label="Menú del responsable">
+          <span class="coordinator-avatar">RP</span>
+          <img src="assets/chevron-down.svg" alt="" width="16" height="16">
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace" id="solicitudes">
+      <aside class="sidebar">
+        <div class="program">
+          <h2>MIED</h2>
+          <p>Maestría en Innovación Educativa</p>
+        </div>
+        <p class="sidebar-label">REVISIÓN DE ACCESOS</p>
+        <nav aria-label="Revisión de accesos">
+          <a class="sidebar-link sidebar-link-active" href="#solicitudes" aria-current="page">
+            <img src="assets/request-icon.svg" alt="" width="14" height="14">
+            <span>Solicitudes pendientes</span>
+            <span class="pending-count" id="sidebar-count">3</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <header class="page-heading">
+          <h1>Autorización de registros</h1>
+          <p>Revisa y valida las identidades de los usuarios que solicitan acceso a la plataforma.</p>
+        </header>
+
+        <section class="review-layout" aria-label="Solicitudes de ingreso">
+          <section class="request-list-panel" aria-labelledby="requests-heading">
+            <div class="list-heading">
+              <h2 id="requests-heading">
+                <span id="pending-label">3 Pendientes</span>
+                <span class="pending-dot" aria-hidden="true"></span>
+              </h2>
+              <div class="filter-wrap">
+                <button class="filter-button" id="filter-button" type="button" aria-expanded="false" aria-controls="filter-menu">
+                  <img src="assets/filter.svg" alt="" width="14" height="14">
+                  <span>Filtros</span>
+                </button>
+                <div class="filter-menu" id="filter-menu" hidden>
+                  <label for="new-only">
+                    <input id="new-only" type="checkbox">
+                    Mostrar solo nuevas
+                  </label>
+                </div>
+              </div>
+            </div>
+            <ul class="request-list" id="request-list" aria-label="Solicitudes pendientes"></ul>
+          </section>
+
+          <article class="request-detail" aria-labelledby="applicant-name">
+            <header class="detail-header">
+              <div class="applicant-avatar" id="applicant-initials" aria-hidden="true">CV</div>
+              <div>
+                <h2 id="applicant-name">Carlos Valenzuela García</h2>
+                <p>Aspirante a registro en plataforma</p>
+              </div>
+            </header>
+
+            <div class="detail-content">
+              <h3>DATOS PROPORCIONADOS EN EL REGISTRO</h3>
+              <dl class="applicant-fields">
+                <div class="detail-field">
+                  <dt>Nombre completo</dt>
+                  <dd id="applicant-full-name">Carlos Valenzuela García</dd>
+                </div>
+                <div class="detail-field">
+                  <dt>Correo electrónico de contacto</dt>
+                  <dd id="applicant-email">carlos.valenzuela@gmail.com</dd>
+                </div>
+                <div class="detail-field">
+                  <dt>Programa educativo declarado</dt>
+                  <dd id="applicant-program">Maestría en Innovación Educativa (MIED)</dd>
+                </div>
+                <div class="detail-field">
+                  <dt>Año de egreso</dt>
+                  <dd id="applicant-graduation-year">2024</dd>
+                </div>
+              </dl>
+
+              <section class="consent-notice" aria-labelledby="consent-title">
+                <img src="assets/consent-shield.svg" alt="" width="20" height="20">
+                <div>
+                  <h3 id="consent-title">Consentimiento legal validado</h3>
+                  <p id="consent-description">El aspirante leyó y aceptó explícitamente los Términos de Servicio y el Aviso de Privacidad Institucional el día 22 de Octubre de 2026 a las 10:15 hrs (Timestamp del sistema).</p>
+                </div>
+              </section>
+
+              <aside class="review-instruction">
+                <p><strong>Instrucción operativa:</strong> Por favor, coteje el nombre completo y el año de egreso en el sistema oficial (SAETI/Registro Escolar) antes de autorizar el acceso.</p>
+              </aside>
+            </div>
+
+            <footer class="detail-actions" aria-label="Acciones de revisión">
+              <button class="deny-button" type="button" disabled>Denegar registro</button>
+              <button class="approve-button" type="button" disabled>Autorizar acceso</button>
+            </footer>
+          </article>
+        </section>
+      </main>
+    </div>
+  </div>
+  <script src="solicitudes-ingreso.js"></script>
+</body>
+</html>
