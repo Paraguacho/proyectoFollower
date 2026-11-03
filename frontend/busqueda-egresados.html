@@ -1,0 +1,265 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Consulta de egresados | Egresados ITSON</title>
+  <link rel="stylesheet" href="busqueda-egresados.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html">EGRESADOS ITSON</a>
+      <nav class="top-navigation" aria-label="Navegación principal">
+        <a class="top-navigation-active" href="#egresados" aria-current="page">Gestión de egresados</a>
+        <a href="solicitudes-ingreso.html">Solicitudes de ingreso</a>
+        <a href="#encuestas">Encuestas</a>
+      </nav>
+      <div class="coordinator">
+        <span>Responsable de programa educativo</span>
+        <button class="coordinator-menu" type="button" aria-label="Menú del responsable">
+          <span class="coordinator-avatar">RP</span>
+          <img src="assets/nav-chevron.svg" alt="" width="16" height="16">
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace" id="egresados">
+      <aside class="sidebar">
+        <div class="program">
+          <p class="program-eyebrow">GESTIÓN DEL PROGRAMA</p>
+          <h2>MIED</h2>
+          <p class="program-name">Maestría en Innovación Educativa</p>
+        </div>
+
+        <nav class="side-navigation" aria-label="Gestión del programa">
+          <a class="side-link" href="#indicadores">
+            <img src="assets/sidebar-indicators.svg" alt="" width="16" height="16">
+            <span>Panel de indicadores</span>
+          </a>
+          <a class="side-link side-link-active" href="#egresados" aria-current="page">
+            <img src="assets/sidebar-graduates.svg" alt="" width="16" height="16">
+            <span>Consulta de egresados</span>
+          </a>
+          <a class="side-link" href="#reportes">
+            <img src="assets/sidebar-reports.svg" alt="" width="16" height="16">
+            <span>Reportes de egresados</span>
+          </a>
+        </nav>
+
+        <div class="side-section-title">ANÁLISIS ESPECIALIZADO</div>
+        <nav class="side-navigation specialized-navigation" aria-label="Análisis especializado">
+          <a class="side-link" href="#analisis-longitudinal">
+            <img src="assets/sidebar-longitudinal.svg" alt="" width="16" height="16">
+            <span>Análisis longitudinal</span>
+          </a>
+          <a class="side-link" href="#produccion-cientifica">
+            <img src="assets/sidebar-science.svg" alt="" width="16" height="16">
+            <span>Producción científica</span>
+          </a>
+          <a class="side-link" href="#analisis-cualitativo">
+            <img src="assets/sidebar-qualitative.svg" alt="" width="16" height="16">
+            <span>Análisis cualitativo</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="main-inner">
+          <nav class="breadcrumb" aria-label="Ruta de navegación">
+            <a href="#inicio">Inicio</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Egresados</span>
+          </nav>
+          <h1 class="page-title">Consulta de egresados</h1>
+          <p class="page-description">Encuentra perfiles de tu programa por nombre o apellidos.</p>
+
+          <div class="scope-notice" role="note">
+            <img src="assets/graduates-lock.svg" alt="" width="20" height="20">
+            <p><strong>Sólo consulta</strong> · Resultados limitados a la Maestría en Innovación Educativa (MIED), tu programa autorizado.</p>
+          </div>
+
+          <section class="search-card" aria-label="Búsqueda de egresados">
+            <form class="search-form" id="search-form">
+              <label class="search-label" for="name-search">Buscar por nombre o apellidos</label>
+              <div class="search-controls">
+                <div class="search-input-wrap">
+                  <img class="search-icon" src="assets/graduates-search.svg" alt="" width="20" height="20">
+                  <input id="name-search" type="search" placeholder="Nombre o apellidos..." autocomplete="off">
+                  <button class="clear-search" id="clear-search" type="button" aria-label="Limpiar búsqueda" hidden>
+                    <img src="assets/graduates-clear.svg" alt="" width="16" height="16">
+                  </button>
+                </div>
+                <button class="search-submit" type="submit">Buscar</button>
+                <button class="filters-toggle" id="filters-toggle" type="button" aria-expanded="true" aria-controls="filters-panel">
+                  <img src="assets/filter-button.svg" alt="" width="16" height="16">
+                  <span>Filtros</span>
+                </button>
+                <label class="outdated-toggle">
+                  <input id="outdated-only" type="checkbox">
+                  <span>Perfiles desactualizados (&gt; 12 meses)</span>
+                </label>
+              </div>
+            </form>
+          </section>
+
+          <section class="filters-card" id="filters-panel" aria-labelledby="filters-heading">
+            <header class="filters-header">
+              <h2 id="filters-heading">Filtros de egresados</h2>
+              <p>Se combinan todas las condiciones seleccionadas</p>
+            </header>
+            <div class="filters-content">
+              <div class="filter-grid">
+                <label class="filter-field">
+                  <span>Situación laboral actual</span>
+                  <select id="employment-filter" data-filter="employment">
+                    <option value="">Todas las situaciones</option>
+                    <option value="Empleo de tiempo completo" selected>Empleo de tiempo completo</option>
+                    <option value="Empleo de medio tiempo">Empleo de medio tiempo</option>
+                    <option value="Emprendimiento">Emprendimiento</option>
+                    <option value="Desempleado">Desempleado</option>
+                    <option value="Estudiante">Estudiante</option>
+                  </select>
+                </label>
+                <label class="filter-field">
+                  <span>Sector de empleo</span>
+                  <select id="sector-filter" data-filter="sector">
+                    <option value="">Todos los sectores</option>
+                    <option>Educativo</option>
+                    <option>Gobierno</option>
+                    <option>Privado</option>
+                    <option>Salud</option>
+                    <option>Independiente</option>
+                  </select>
+                </label>
+                <label class="filter-field">
+                  <span>Nivel de estudio actual (posgrados)</span>
+                  <select id="education-filter" data-filter="education">
+                    <option value="">Todos los niveles</option>
+                    <option>Maestría</option>
+                    <option>Doctorado</option>
+                    <option>Posdoctorado</option>
+                  </select>
+                </label>
+                <label class="filter-field">
+                  <span>País</span>
+                  <select id="country-filter" data-filter="country">
+                    <option value="">Todos los países</option>
+                    <option value="México" selected>México</option>
+                    <option>Estados Unidos</option>
+                    <option>Canadá</option>
+                  </select>
+                </label>
+                <label class="filter-field">
+                  <span>Estado</span>
+                  <select id="state-filter" data-filter="state">
+                    <option value="">Todos los estados</option>
+                    <option value="Sonora" selected>Sonora</option>
+                    <option>Chihuahua</option>
+                    <option>Sinaloa</option>
+                    <option>Jalisco</option>
+                  </select>
+                </label>
+                <label class="filter-field">
+                  <span>Ciudad</span>
+                  <select id="city-filter" data-filter="city">
+                    <option value="">Todas las ciudades</option>
+                    <option>Ciudad Obregón</option>
+                    <option>Navojoa</option>
+                    <option>Hermosillo</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="program-filters">
+                <div class="program-generation">
+                  <span class="program-filter-title">Datos del programa - MIED</span>
+                  <label class="filter-field" for="generation-filter">
+                    <span>Generación de la MIED</span>
+                    <select id="generation-filter" data-filter="generation">
+                      <option value="">Todas las generaciones</option>
+                      <option value="IV 2020–2022" selected>IV 2020–2022</option>
+                      <option>III 2018–2020</option>
+                      <option>V 2022–2024</option>
+                    </select>
+                  </label>
+                  <small>Catálogo configurado por el responsable del programa.</small>
+                </div>
+                <div class="institution-filter">
+                  <label class="program-filter-title" for="institution-filter">Institución / empresa</label>
+                  <label class="filter-field" for="institution-filter">
+                    <span>Institución actual</span>
+                    <span class="institution-input-wrap">
+                      <img src="assets/institution-search.svg" alt="" width="16" height="16">
+                      <input id="institution-filter" type="search" data-filter="institution" value="ITSON" autocomplete="off">
+                      <button id="clear-institution" type="button" aria-label="Limpiar institución">
+                        <img src="assets/graduates-clear.svg" alt="" width="16" height="16">
+                      </button>
+                    </span>
+                  </label>
+                  <small>Busca coincidencias sólo en registros laborales vigentes.</small>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="active-filters" aria-label="Filtros aplicados">
+            <div class="active-filters-heading">
+              <h2><span id="active-filter-count">4</span> filtros activos</h2>
+              <button id="clear-all-filters" type="button">Limpiar todos los filtros</button>
+            </div>
+            <div class="filter-chips" id="filter-chips" aria-live="polite"></div>
+          </section>
+
+          <section class="results-card" aria-labelledby="results-heading">
+            <header class="results-summary">
+              <div>
+                <h2 id="results-heading">Mostrando 2 resultados</h2>
+                <p id="results-description">Cumplen los 4 filtros activos • Institución laboral vigente: ITSON • Más recientes primero.</p>
+              </div>
+              <span class="program-badge">MIED</span>
+            </header>
+            <div class="table-scroll">
+              <table class="graduates-table">
+                <thead>
+                  <tr>
+                    <th scope="col" aria-sort="none"><button type="button" data-sort="name">Nombre completo <img src="assets/sort-name.svg" alt="" width="12" height="12"></button></th>
+                    <th scope="col" aria-sort="none"><button type="button" data-sort="generation">Generación / Año de titulación <img src="assets/sort-generation.svg" alt="" width="12" height="12"></button></th>
+                    <th scope="col" aria-sort="none"><button type="button" data-sort="employment">Situación laboral actual <img src="assets/sort-status.svg" alt="" width="12" height="12"></button></th>
+                    <th scope="col" aria-sort="descending"><button class="sorted-desc" type="button" data-sort="updated">Fecha de última actualización <img src="assets/sort-updated.svg" alt="" width="12" height="12"></button></th>
+                    <th scope="col" class="action-heading">Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="results-body"></tbody>
+              </table>
+            </div>
+            <footer class="results-footer">
+              <p id="results-range">1-2 de 2 resultados</p>
+              <div class="pagination">
+                <label for="page-size">Registros por página</label>
+                <select id="page-size" aria-label="Registros por página">
+                  <option value="10" selected>10</option>
+                  <option value="20">20</option>
+                  <option value="50">50</option>
+                </select>
+                <nav class="pagination-controls" aria-label="Paginación">
+                  <button id="previous-page" type="button" aria-label="Página anterior" disabled>
+                    <img src="assets/page-previous.svg" alt="" width="16" height="16">
+                  </button>
+                  <span class="current-page" id="current-page">1</span>
+                  <button id="next-page" type="button" aria-label="Página siguiente" disabled>
+                    <img src="assets/page-next.svg" alt="" width="16" height="16">
+                  </button>
+                </nav>
+              </div>
+            </footer>
+          </section>
+
+          <footer class="page-footer">EGRESADOS ITSON - MIED</footer>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="busqueda-egresados.js"></script>
+</body>
+</html>

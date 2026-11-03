@@ -1,0 +1,11 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="input#filtro-vencidos" clip-path="url(#clip0_0_14)">
+<path id="Vector" d="M3.84 8.32L6.72 11.2L12.16 4.8" stroke-width="2.24" stroke-linecap="round" stroke-linejoin="round" stroke="white"/>
+<path id="Vector_2" d="M13.99 1H3C1.89543 1 1 1.89543 1 3V13.99C1 15.0946 1.89543 15.99 3 15.99H13.99C15.0946 15.99 15.99 15.0946 15.99 13.99V3C15.99 1.89543 15.0946 1 13.99 1Z" fill="white" stroke="#767676"/>
+</g>
+<defs>
+<clipPath id="clip0_0_14">
+<rect width="16" height="16" fill="white"/>
+</clipPath>
+</defs>
+</svg>
