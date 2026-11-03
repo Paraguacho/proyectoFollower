@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidencias y documentos | Egresados ITSON</title>
+  <link rel="stylesheet" href="evidencias.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html">EGRESADOS ITSON</a>
+      <nav class="top-navigation" aria-label="Navegación principal">
+        <a href="index.html">Tablero</a>
+        <a class="profile-link" href="#perfil">
+          <span class="profile-avatar" aria-hidden="true">SM</span>
+          <span>Mi Perfil</span>
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="profile-layout">
+    <aside class="sidebar">
+      <p class="sidebar-title">Gestión de perfil</p>
+      <nav class="profile-navigation" aria-label="Gestión de perfil">
+        <a href="#informacion-general">Información General</a>
+        <a href="#trayectoria">Trayectoria</a>
+        <a href="#productividad">Productividad y Reconocimientos</a>
+        <a class="sidebar-link-active" href="#evidencias" aria-current="page">Evidencias y Documentos</a>
+        <a class="sidebar-settings" href="#configuracion">Configuración de cuenta</a>
+      </nav>
+      <a class="cv-download" href="#cv">
+        <span aria-hidden="true">↓</span>
+        Descargar mi CV (PDF)
+      </a>
+      <p class="cv-description">Genera un documento con toda tu información registrada.</p>
+    </aside>
+
+    <main class="main-content" id="evidencias">
+      <header class="page-heading">
+        <h1>Evidencias y Documentos</h1>
+        <p>Sube tus títulos, certificados y constancias que respalden la información de tu perfil.</p>
+      </header>
+
+      <section class="upload-card" aria-label="Subir documento de evidencia">
+        <label class="dropzone" id="dropzone" for="evidence-file-input">
+          <input class="visually-hidden" id="evidence-file-input" type="file" accept=".pdf,application/pdf">
+          <span class="upload-icon" aria-hidden="true">
+            <img src="assets/evidence-upload.svg" alt="" width="28" height="28">
+          </span>
+          <span class="dropzone-title">Haz clic o arrastra un documento aquí</span>
+          <span class="dropzone-description">Sube constancias, títulos, certificaciones o cualquier<br class="desktop-break"> documento que valide tu trayectoria.</span>
+          <span class="upload-rules">
+            <span class="upload-rule">
+              <img src="assets/evidence-pdf.svg" alt="" width="16" height="16">
+              Únicamente PDF
+            </span>
+            <span class="rule-divider" aria-hidden="true">|</span>
+            <span class="upload-rule">
+              <img src="assets/evidence-file.svg" alt="" width="16" height="16">
+              Máximo 5 MB
+            </span>
+          </span>
+        </label>
+        <p class="upload-feedback" id="upload-feedback" role="status" aria-live="polite"></p>
+      </section>
+
+      <section class="documents-card" aria-labelledby="documents-heading">
+        <header class="documents-header">
+          <h2 id="documents-heading">Documentos almacenados</h2>
+          <span class="document-count" id="document-count">2 archivos</span>
+        </header>
+        <ul class="document-list" id="document-list" aria-live="polite"></ul>
+      </section>
+    </main>
+  </div>
+
+  <script src="evidencias.js"></script>
+</body>
+</html>
