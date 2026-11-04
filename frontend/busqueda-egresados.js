@@ -179,6 +179,7 @@ const clearInstitutionButton = document.getElementById("clear-institution");
 const pageSizeSelect = document.getElementById("page-size");
 const previousPageButton = document.getElementById("previous-page");
 const nextPageButton = document.getElementById("next-page");
+const searchView = new URLSearchParams(window.location.search).get("vista");
 let stateWasChanged = false;
 let currentPage = 1;
 let sortKey = "updated";
@@ -208,6 +209,11 @@ const readFilters = () => ({
   outdated: controls.outdated.checked
 });
 
+const normalizeSearchText = (value) => value
+  .toLocaleLowerCase("es")
+  .normalize("NFD")
+  .replace(/[\u0300-\u036f]/g, "");
+
 const isOutdated = (graduate) => {
   const updatedAt = new Date(`${graduate.updated}T00:00:00`);
   const cutoff = new Date();
@@ -217,9 +223,9 @@ const isOutdated = (graduate) => {
 
 const getFilteredGraduates = () => {
   const filters = readFilters();
-  const query = filters.search.toLocaleLowerCase("es");
+  const query = normalizeSearchText(filters.search);
   return graduates.filter((graduate) => {
-    const searchableText = `${graduate.name} ${graduate.generation} ${graduate.graduationYear}`.toLocaleLowerCase("es");
+    const searchableText = normalizeSearchText(`${graduate.name} ${graduate.generation} ${graduate.graduationYear}`);
     const matchesSearch = !query || searchableText.includes(query);
     const matchesEmployment = !filters.employment || graduate.employment === filters.employment;
     const matchesSector = !filters.sector || graduate.sector === filters.sector;
@@ -378,16 +384,18 @@ const renderTable = (filteredGraduates) => {
   const start = (currentPage - 1) * pageSize;
   const pageRows = sorted.slice(start, start + pageSize);
   resultsBody.replaceChildren();
+  const table = document.querySelector(".graduates-table");
+  const emptyState = document.getElementById("empty-search-state");
 
   if (pageRows.length === 0) {
-    const row = document.createElement("tr");
-    const cell = document.createElement("td");
-    cell.className = "empty-results";
-    cell.colSpan = 5;
-    cell.textContent = "No se encontraron egresados con los criterios seleccionados.";
-    row.append(cell);
-    resultsBody.append(row);
+    table.hidden = true;
+    emptyState.hidden = false;
+    emptyState.textContent = searchView === "sin-resultados"
+      ? "No se encontraron egresados que coincidan con la búsqueda."
+      : "No se encontraron egresados con los criterios seleccionados.";
   } else {
+    table.hidden = false;
+    emptyState.hidden = true;
     pageRows.forEach((graduate) => resultsBody.append(createGraduateRow(graduate)));
   }
 
@@ -409,6 +417,9 @@ const render = () => {
   renderChips(activeFilters);
   renderTable(filteredGraduates);
   clearSearchButton.hidden = controls.search.value.length === 0;
+  const searchDescription = filteredGraduates.length === 0
+    ? `No hubo coincidencias para “${controls.search.value.trim()}”.`
+    : `Coincidencias para “${controls.search.value.trim()}” • Más recientes primero.`;
 
   const institution = controls.institution.value.trim();
   const filterSummary = activeFilters.length
@@ -416,7 +427,9 @@ const render = () => {
     : "Resultados del programa";
   const institutionSummary = institution ? ` • Institución laboral vigente: ${institution}` : "";
   document.getElementById("results-description").textContent =
-    `${filterSummary}${institutionSummary} • Más recientes primero.`;
+    searchView === "busqueda" || searchView === "sin-resultados"
+      ? searchDescription
+      : `${filterSummary}${institutionSummary} • Más recientes primero.`;
 };
 
 searchForm.addEventListener("submit", (event) => {
@@ -509,5 +522,24 @@ nextPageButton.addEventListener("click", () => {
   currentPage += 1;
   render();
 });
+
+if (searchView === "busqueda" || searchView === "sin-resultados") {
+  document.body.classList.add("simple-search");
+  filtersPanel.hidden = true;
+  document.querySelector(".active-filters").hidden = true;
+  Object.keys(defaultFilters).forEach((key) => {
+    const control = controls[key];
+    if (key === "outdated") control.checked = false;
+    else control.value = "";
+  });
+  controls.search.value = searchView === "busqueda" ? "Ana Pérez" : "Egresado inexistente";
+  document.querySelector(".page-title").textContent = "Búsqueda de Egresados";
+  document.title = searchView === "sin-resultados"
+    ? "Búsqueda de Egresados sin resultados | Egresados ITSON"
+    : "Búsqueda de Egresados | Egresados ITSON";
+  document.querySelector(".page-description").textContent =
+    "Encuentra perfiles de egresados de tu programa por nombre o apellidos.";
+  document.getElementById("filters-toggle").hidden = true;
+}
 
 render();

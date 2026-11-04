@@ -750,6 +750,28 @@ button, select { cursor: pointer; }
   text-align: center;
 }
 
+.empty-search-state {
+  margin: 0;
+  padding: 32px 24px;
+  color: var(--secondary);
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+}
+
+.simple-search .filters-card,
+.simple-search .active-filters { display: none; }
+
+.simple-search .search-controls {
+  grid-template-columns: minmax(180px, 1fr) 95px;
+}
+
+.simple-search .filters-toggle,
+.simple-search .outdated-toggle { display: none; }
+
+.simple-search .results-card { top: 328px; }
+.simple-search .page-footer { top: 760px; }
+
 .results-footer {
   min-height: 62px;
   padding: 0 24px;
@@ -855,6 +877,9 @@ select:focus-visible {
   .page-footer {
     position: static;
     width: auto;
+  }
+  .simple-search .search-controls {
+    grid-template-columns: minmax(160px, 1fr) 95px;
   }
   .page-title { margin: 0; }
   .page-description { margin-top: -12px; }

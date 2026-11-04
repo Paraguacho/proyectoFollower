@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Calidad de datos | Egresados ITSON</title>
+  <link rel="stylesheet" href="calidad-datos.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html">EGRESADOS ITSON</a>
+      <nav class="top-navigation" aria-label="Navegación principal">
+        <a class="top-navigation-active" href="busqueda-egresados.html">Gestión de egresados</a>
+        <a href="solicitudes-ingreso.html">Solicitudes de ingreso</a>
+      </nav>
+      <div class="coordinator">
+        <span>Responsable de programa educativo</span>
+        <span class="coordinator-avatar" aria-label="Responsable del programa">RP</span>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="program">
+          <p class="program-eyebrow">GESTIÓN DEL PROGRAMA</p>
+          <h2>MIED</h2>
+          <p class="program-name">Maestría en Innovación Educativa</p>
+        </div>
+        <nav class="side-navigation" aria-label="Gestión del programa">
+          <a class="side-link" href="#indicadores">
+            <img src="assets/sidebar-indicators.svg" alt="" width="16" height="16">
+            <span>Panel de indicadores</span>
+          </a>
+          <a class="side-link" href="busqueda-egresados.html">
+            <img src="assets/sidebar-graduates.svg" alt="" width="16" height="16">
+            <span>Consulta de egresados</span>
+          </a>
+          <a class="side-link side-link-active" href="calidad-datos.html" aria-current="page">
+            <img src="assets/sidebar-reports.svg" alt="" width="16" height="16">
+            <span>Calidad de datos</span>
+          </a>
+        </nav>
+        <div class="side-section-title">ANÁLISIS ESPECIALIZADO</div>
+        <nav class="side-navigation specialized-navigation" aria-label="Análisis especializado">
+          <a class="side-link" href="#analisis-longitudinal">
+            <img src="assets/sidebar-longitudinal.svg" alt="" width="16" height="16">
+            <span>Análisis longitudinal</span>
+          </a>
+          <a class="side-link" href="#produccion-cientifica">
+            <img src="assets/sidebar-science.svg" alt="" width="16" height="16">
+            <span>Producción científica</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="main-inner">
+          <nav class="breadcrumb" aria-label="Ruta de navegación">
+            <a href="busqueda-egresados.html">Inicio</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Calidad de datos</span>
+          </nav>
+          <header class="page-heading">
+            <div>
+              <h1>Calidad de datos</h1>
+              <p>Seguimiento de actualización y completitud de perfiles del programa.</p>
+            </div>
+            <span class="program-badge">MIED</span>
+          </header>
+
+          <div class="demo-notice" role="note">
+            <strong>Vista de demostración</strong>
+            <span>Los indicadores y perfiles mostrados son datos de ejemplo; no provienen de registros guardados.</span>
+          </div>
+
+          <section class="summary-grid" aria-label="Resumen de calidad de datos">
+            <article class="summary-card">
+              <p class="summary-label">Egresados del programa</p>
+              <p class="summary-value" id="total-graduates">11</p>
+              <p class="summary-detail">Población de referencia</p>
+            </article>
+            <article class="summary-card">
+              <p class="summary-label">Actualizados en el último año</p>
+              <p class="summary-value" id="updated-summary-value"><span id="updated-total">8</span><span class="summary-of">/ 11 · </span><span class="summary-percent" id="updated-percent">72.7%</span></p>
+              <p class="summary-detail">Perfiles con actividad reciente</p>
+            </article>
+            <article class="summary-card summary-card-warning">
+              <p class="summary-label">Pendientes de actualización</p>
+              <p class="summary-value" id="outdated-total">3</p>
+              <p class="summary-detail">Sin cambios en más de 12 meses</p>
+            </article>
+            <article class="summary-card summary-card-incomplete">
+              <p class="summary-label">Perfiles incompletos</p>
+              <p class="summary-value" id="incomplete-total">2</p>
+              <p class="summary-detail">Requieren completar información</p>
+            </article>
+          </section>
+
+          <section class="panel generation-panel" aria-labelledby="generation-heading">
+            <header class="panel-heading">
+              <div>
+                <h2 id="generation-heading">Actualización por generación</h2>
+                <p>Porcentaje calculado sobre el total de perfiles de cada generación.</p>
+              </div>
+              <span class="last-refresh">Último corte: 04 nov 2026</span>
+            </header>
+            <div class="generation-table-scroll">
+              <table class="generation-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Generación</th>
+                    <th scope="col">Perfiles</th>
+                    <th scope="col">Actualizados</th>
+                    <th scope="col">Cobertura</th>
+                  </tr>
+                </thead>
+                <tbody id="generation-rows"></tbody>
+              </table>
+            </div>
+          </section>
+
+          <section class="interpretation-panel" aria-labelledby="interpretation-heading">
+            <header>
+              <div>
+                <h2 id="interpretation-heading">Cómo interpretar los registros</h2>
+                <p>Una respuesta negativa no equivale a un dato faltante o vencido.</p>
+              </div>
+            </header>
+            <div class="interpretation-grid">
+              <article class="interpretation-item">
+                <span class="status-dot status-negative" aria-hidden="true"></span>
+                <div>
+                  <h3>Respuesta negativa</h3>
+                  <p>El egresado indicó que no tiene empleo. Es una respuesta registrada, no un dato faltante.</p>
+                </div>
+              </article>
+              <article class="interpretation-item">
+                <span class="status-dot status-missing" aria-hidden="true"></span>
+                <div>
+                  <h3>Dato no proporcionado</h3>
+                  <p>El campo quedó vacío; no se interpreta como una respuesta negativa.</p>
+                </div>
+              </article>
+              <article class="interpretation-item">
+                <span class="status-dot status-outdated" aria-hidden="true"></span>
+                <div>
+                  <h3>Perfil sin actualizar</h3>
+                  <p>La información registrada supera los 12 meses de antigüedad.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="panel follow-up-panel" aria-labelledby="follow-up-heading">
+            <header class="panel-heading follow-up-heading">
+              <div>
+                <h2 id="follow-up-heading">Seguimiento de perfiles</h2>
+                <p id="follow-up-description">Identifica perfiles vencidos o incompletos y prepara un listado para seguimiento.</p>
+              </div>
+              <button class="export-button" id="export-contacts" type="button">Exportar lista de contactos</button>
+            </header>
+            <div class="follow-up-filters">
+              <label>
+                <span>Estado del perfil</span>
+                <select id="profile-status-filter">
+                  <option value="all">Todos los perfiles</option>
+                  <option value="outdated">Pendientes de actualización</option>
+                  <option value="incomplete">Perfiles incompletos</option>
+                </select>
+              </label>
+              <label>
+                <span>Generación</span>
+                <select id="generation-filter">
+                  <option value="">Todas las generaciones</option>
+                  <option value="IV 2020–2022">IV 2020–2022</option>
+                  <option value="III 2018–2020">III 2018–2020</option>
+                  <option value="V 2022–2024">V 2022–2024</option>
+                </select>
+              </label>
+            </div>
+            <div class="follow-up-table-scroll">
+              <table class="follow-up-table">
+                <thead>
+                  <tr>
+                    <th scope="col">Egresado</th>
+                    <th scope="col">Generación</th>
+                    <th scope="col">Situación laboral</th>
+                    <th scope="col">Última actualización</th>
+                    <th scope="col">Calidad del perfil</th>
+                  </tr>
+                </thead>
+                <tbody id="follow-up-rows"></tbody>
+              </table>
+              <p class="empty-follow-up" id="empty-follow-up" hidden>No hay perfiles que coincidan con los filtros seleccionados.</p>
+            </div>
+            <p class="follow-up-feedback" id="follow-up-feedback" role="status" aria-live="polite"></p>
+          </section>
+          <footer class="page-footer">EGRESADOS ITSON - MIED</footer>
+        </div>
+      </main>
+    </div>
+  </div>
+  <script src="calidad-datos.js"></script>
+</body>
+</html>
