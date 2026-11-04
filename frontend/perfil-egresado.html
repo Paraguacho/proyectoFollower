@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Detalle de egresado | Egresados ITSON</title>
+  <link rel="stylesheet" href="busqueda-egresados.css">
+  <link rel="stylesheet" href="perfil-egresado.css">
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <a class="brand" href="index.html">EGRESADOS ITSON</a>
+      <nav class="top-navigation" aria-label="Navegación principal">
+        <a class="top-navigation-active" href="busqueda-egresados.html" aria-current="page">Gestión de egresados</a>
+        <a href="solicitudes-ingreso.html">Solicitudes de ingreso</a>
+        <a href="busqueda-egresados.html#encuestas">Encuestas</a>
+      </nav>
+      <div class="coordinator">
+        <span>Responsable de programa educativo</span>
+        <button class="coordinator-menu" type="button" aria-label="Menú del responsable">
+          <span class="coordinator-avatar">RP</span>
+          <img src="assets/nav-chevron.svg" alt="" width="16" height="16">
+        </button>
+      </div>
+    </header>
+
+    <div class="workspace">
+      <aside class="sidebar">
+        <div class="program">
+          <p class="program-eyebrow">GESTIÓN DEL PROGRAMA</p>
+          <h2>MIED</h2>
+          <p class="program-name">Maestría en Innovación Educativa</p>
+        </div>
+        <nav class="side-navigation" aria-label="Gestión del programa">
+          <a class="side-link" href="busqueda-egresados.html#indicadores">
+            <img src="assets/sidebar-indicators.svg" alt="" width="16" height="16">
+            <span>Panel de indicadores</span>
+          </a>
+          <a class="side-link side-link-active" href="busqueda-egresados.html" aria-current="page">
+            <img src="assets/sidebar-graduates.svg" alt="" width="16" height="16">
+            <span>Consulta de egresados</span>
+          </a>
+          <a class="side-link" href="calidad-datos.html">
+            <img src="assets/sidebar-indicators.svg" alt="" width="16" height="16">
+            <span>Calidad de datos</span>
+          </a>
+          <a class="side-link" href="busqueda-egresados.html#reportes">
+            <img src="assets/sidebar-reports.svg" alt="" width="16" height="16">
+            <span>Reportes de egresados</span>
+          </a>
+        </nav>
+        <div class="side-section-title">ANÁLISIS ESPECIALIZADO</div>
+        <nav class="side-navigation specialized-navigation" aria-label="Análisis especializado">
+          <a class="side-link" href="busqueda-egresados.html#analisis-longitudinal">
+            <img src="assets/sidebar-longitudinal.svg" alt="" width="16" height="16">
+            <span>Análisis longitudinal</span>
+          </a>
+          <a class="side-link" href="busqueda-egresados.html#produccion-cientifica">
+            <img src="assets/sidebar-science.svg" alt="" width="16" height="16">
+            <span>Producción científica</span>
+          </a>
+          <a class="side-link" href="busqueda-egresados.html#analisis-cualitativo">
+            <img src="assets/sidebar-qualitative.svg" alt="" width="16" height="16">
+            <span>Análisis cualitativo</span>
+          </a>
+        </nav>
+      </aside>
+
+      <main class="main-content">
+        <div class="main-inner profile-detail-inner">
+          <nav class="profile-breadcrumb" aria-label="Ruta de navegación">
+            <a href="busqueda-egresados.html">Egresados</a>
+            <span aria-hidden="true">/</span>
+            <span aria-current="page">Detalle de egresado</span>
+          </nav>
+
+          <header class="profile-page-heading">
+            <div>
+              <h1>Detalle de egresado</h1>
+              <p>Consulta de información compartida por la persona egresada.</p>
+            </div>
+            <button class="cv-download-button" id="download-cv" type="button">
+              <span aria-hidden="true">↓</span>
+              Descargar CV (PDF)
+            </button>
+          </header>
+
+          <div class="demo-notice" role="note">
+            <strong>Datos de demostración.</strong>
+            La información de esta vista es ilustrativa y no corresponde a un expediente real.
+          </div>
+
+          <section class="profile-summary-card" aria-labelledby="profile-name">
+            <div class="profile-initials" id="profile-initials" aria-hidden="true"></div>
+            <div class="profile-summary-copy">
+              <p class="profile-eyebrow">PERFIL DE EGRESADO · MIED</p>
+              <h2 id="profile-name"></h2>
+              <p id="profile-program-line"></p>
+              <div class="profile-meta">
+                <span id="profile-location"></span>
+                <span class="meta-separator" aria-hidden="true">·</span>
+                <span id="profile-updated"></span>
+              </div>
+            </div>
+            <div class="profile-mode" aria-label="Vistas del perfil">
+              <a id="summary-view-link" href="#">Detalle</a>
+              <a id="complete-view-link" href="#">Perfil completo</a>
+            </div>
+          </section>
+
+          <nav class="profile-section-nav" aria-label="Secciones del perfil">
+            <a href="#informacion-general">Información general</a>
+            <a href="#trayectoria">Trayectoria</a>
+            <a href="#productividad">Productividad y reconocimientos</a>
+            <a href="#vinculacion">Vinculación</a>
+            <a class="complete-only" href="#respuestas">Respuestas de módulos</a>
+          </nav>
+
+          <section class="profile-card" id="informacion-general" aria-labelledby="general-heading">
+            <header class="profile-card-heading">
+              <div>
+                <p class="profile-eyebrow">PERFIL</p>
+                <h2 id="general-heading">Información general</h2>
+              </div>
+              <span class="readonly-badge">Solo lectura</span>
+            </header>
+            <dl class="general-grid" id="general-grid"></dl>
+          </section>
+
+          <section class="profile-card" id="trayectoria" aria-labelledby="trajectory-heading">
+            <header class="profile-card-heading">
+              <div>
+                <p class="profile-eyebrow">EXPERIENCIA Y FORMACIÓN</p>
+                <h2 id="trajectory-heading">Trayectoria</h2>
+              </div>
+              <a class="text-link complete-only" id="trajectory-mode-link" href="#">Ver historial completo</a>
+            </header>
+            <div class="trajectory-grid">
+              <section class="timeline-section" aria-labelledby="employment-heading">
+                <h3 id="employment-heading">Experiencia laboral</h3>
+                <ol class="timeline-list" id="employment-history"></ol>
+              </section>
+              <section class="timeline-section" aria-labelledby="education-heading">
+                <h3 id="education-heading">Formación académica</h3>
+                <ol class="timeline-list" id="education-history"></ol>
+              </section>
+            </div>
+          </section>
+
+          <section class="profile-card" id="productividad" aria-labelledby="productivity-heading">
+            <header class="profile-card-heading">
+              <div>
+                <p class="profile-eyebrow">APORTACIONES</p>
+                <h2 id="productivity-heading">Productividad y reconocimientos</h2>
+              </div>
+            </header>
+            <div class="record-grid" id="productivity-records"></div>
+          </section>
+
+          <section class="profile-card" id="vinculacion" aria-labelledby="connection-heading">
+            <header class="profile-card-heading">
+              <div>
+                <p class="profile-eyebrow">COMUNIDAD</p>
+                <h2 id="connection-heading">Vinculación</h2>
+              </div>
+            </header>
+            <div class="record-grid" id="connection-records"></div>
+          </section>
+
+          <section class="profile-card complete-only" id="respuestas" aria-labelledby="responses-heading">
+            <header class="profile-card-heading">
+              <div>
+                <p class="profile-eyebrow">INFORMACIÓN ADICIONAL</p>
+                <h2 id="responses-heading">Respuestas de módulos personalizados</h2>
+              </div>
+            </header>
+            <div class="responses-grid" id="module-responses"></div>
+          </section>
+
+          <section class="profile-card" aria-labelledby="evidence-heading">
+            <header class="profile-card-heading">
+              <div>
+                <p class="profile-eyebrow">DOCUMENTOS</p>
+                <h2 id="evidence-heading">Evidencias</h2>
+              </div>
+              <span class="profile-card-caption">Archivos PDF compartidos</span>
+            </header>
+            <ul class="evidence-list" id="evidence-list"></ul>
+          </section>
+
+          <footer class="profile-page-footer">EGRESADOS ITSON - MIED</footer>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <dialog class="evidence-dialog" id="evidence-dialog" aria-labelledby="evidence-dialog-title">
+    <header>
+      <div>
+        <p class="profile-eyebrow">VISTA PREVIA · PDF</p>
+        <h2 id="evidence-dialog-title"></h2>
+      </div>
+      <button id="close-evidence-dialog" type="button" aria-label="Cerrar vista previa">×</button>
+    </header>
+    <iframe id="evidence-preview" title="Vista previa del documento PDF"></iframe>
+    <footer>
+      <a class="text-link" id="download-evidence" href="#" download>Descargar PDF</a>
+      <button class="secondary-button" id="close-evidence-footer" type="button">Cerrar</button>
+    </footer>
+  </dialog>
+
+  <script src="perfil-egresado.js"></script>
+</body>
+</html>

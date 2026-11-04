@@ -353,7 +353,7 @@ const createGraduateRow = (graduate) => {
   const actionCell = document.createElement("td");
   const profileLink = document.createElement("a");
   profileLink.className = "profile-link";
-  profileLink.href = `#perfil-${encodeURIComponent(graduate.name.toLocaleLowerCase("es").replace(/\s+/g, "-"))}`;
+  profileLink.href = `perfil-egresado.html?perfil=${encodeURIComponent(graduate.name)}`;
   profileLink.textContent = "Ver perfil";
   const arrow = document.createElement("img");
   arrow.src = "assets/profile-arrow.svg";
